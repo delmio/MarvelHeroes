@@ -1,0 +1,7 @@
+small.link{
+    cursor: pointer;
+}
+
+small.link:hover{
+    color: brown;
+}

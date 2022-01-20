@@ -11,6 +11,8 @@ import { MarvelExternalApiService } from '../../services/marvel-external-api.ser
 })
 export class ListaHeroesComponent implements OnInit {
 
+  listaHeroes:any[];
+
   constructor(
     private MarvelExternalApi : MarvelExternalApiService
   ) {}
@@ -19,7 +21,16 @@ export class ListaHeroesComponent implements OnInit {
 
     this.MarvelExternalApi.getHeroes().toPromise()
     .then((r)=>{
+
       console.log(r);
+
+      this.listaHeroes = r.data.results.map(x => {
+        x.urlFinalImagen = x.thumbnail.path + '.' + x.thumbnail.extension;
+        return x;
+      });
+      
+    }).catch((err)=>{
+      console.log(err);
     })
   }
 
