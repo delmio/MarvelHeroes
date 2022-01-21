@@ -18,6 +18,11 @@ export class MarvelExternalApiService {
     return this._http.get(finalUrl);
   }
 
+  getHeroesOffset(offset:number):Observable<any>{
+    var finalUrl = this._url + 'characters/offset/'+offset;
+    return this._http.get(finalUrl);
+  }
+
   getHeroById(id):Observable<any>{
     var finalUrl = this._url + 'characters/'+ id;
     return this._http.get(finalUrl);

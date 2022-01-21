@@ -1,0 +1,34 @@
+<a class = "btnInter" (click) = "redirectBack()">Atrás</a>
+<div class="container">
+    <div class="titulo">
+        <h2>{{SelectedHero_.name}}</h2>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <img src="{{SelectedHero_.urlFinalImagen}}" class="card-img-top imgHero" alt="{{SelectedHero_.name}}" >
+        </div>
+        <div class="col-9">
+
+            <div style="transform: rotate(2deg); margin-top: 20px;">
+
+                <div class="div-desgloce-heroe">
+                    <label style="font-size: 30px">Descripción</label>
+                </div>
+    
+                <div class="div-desgloce-heroe">
+                    <label>{{SelectedHero_.description}}</label>
+                </div>
+    
+                <div class="div-desgloce-heroe">
+                    <label>{{ SelectedHero_.modified | date:'fullDate'}} , {{ SelectedHero_.modified | date:'shortTime'}} </label>
+                </div>
+    
+                <div class="div-desgloce-heroe">
+                    <button type="button" class="btn btn-primary">Clasificar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

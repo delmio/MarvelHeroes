@@ -36,3 +36,37 @@ small.link:hover{
     margin-top: 15px;
     margin-left: 12px;
 }
+
+.nextPage{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    transform: rotate(8deg);
+    border: 2px white solid;
+    width: 55px;
+    display: flex;
+    float: right;
+}
+
+.prevPage{
+    padding: 10px;
+    background-color: #003aff;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    transform: rotate(8deg);
+    border: 2px white solid;
+    width: 55px;
+    display: flex;
+    float: left;
+}
+
+div .paginator{
+    width: 100%;
+    background-color: white;
+    margin-top: 15px;
+}
