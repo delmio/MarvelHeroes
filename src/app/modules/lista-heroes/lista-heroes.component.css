@@ -5,3 +5,12 @@ small.link{
 small.link:hover{
     color: brown;
 }
+
+.modal-dialog {
+    max-width: 1500px;
+
+}
+
+.card-body{
+    height: 360px;
+}

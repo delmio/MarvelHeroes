@@ -3,12 +3,14 @@
 
         <div class = "col-3" *ngFor = "let h of listaHeroes" style="margin-bottom: 15px; margin-top: 5px;">
 
-            <div class="card" style="width: 18rem;">
-                <img src="{{h.urlFinalImagen}}" class="card-img-top" alt="...">
+            <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                <img src="{{h.urlFinalImagen}}" class="card-img-top" alt="{{h.name}}" style="height: 250px; width: 250px;">
                 <div class="card-body">
                 <h5 class="card-title">{{h.name}}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <small class="link">Heroe ID: {{h.id}}</small>
+                <small style="font-size: 10px;">Modified: {{ h.modified | date: 'dd/MM/yyyy'}}</small>
+                <p class="card-text" *ngIf = "h.description != ''">{{h.description}}</p>
+                <p class="card-text" *ngIf = "h.description == ''">No description found for this hero.</p>
+                <small class="link" (click) = "openHeroModal(h.id)" >Hero ID: {{h.id}}</small>
                 </div>
             </div>
 
@@ -17,3 +19,130 @@
     </div>
 </div>
 
+<div class="modal fade" id="heroDescription" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{SelectedHero_.name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-3">
+                    <img 
+                    src="{{SelectedHero_.urlFinalImagen}}" 
+                    class="card-img-top" 
+                    alt="{{SelectedHero_.name}}" 
+                    style="height: 200px; width: 200px;">
+                </div>
+                <div class="col-9">
+                    <h5 class="text-justify" *ngIf = "SelectedHero_.description != ''"><strong>Description:</strong> {{SelectedHero_.description}}</h5>
+                    <h5 class="text-justify" *ngIf = "SelectedHero_.description == ''"><strong>Description:</strong> No description found for this hero.</h5>
+                    <br>
+                    <div class="row">
+                        <div class="col-6">
+                            <label><strong>Hero ID:</strong> {{SelectedHero_.id}}</label>
+                        </div>
+                        <div class="col-6">
+                            <label><strong>Modified:</strong> {{ SelectedHero_.modified | date: 'dd/MM/yyyy'}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <hr>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item" (click) = "changeActive(0)">
+                  <a class="nav-link {{listaActivos[0]}}" id="comics-tab" href="#">Comics</a>
+                </li>
+                <li class="nav-item"  (click) = "changeActive(1)">
+                  <a class="nav-link {{listaActivos[1]}}" id="events-tab" href="#">Events</a>
+                </li>
+                <li class="nav-item"  (click) = "changeActive(2)">
+                  <a class="nav-link {{listaActivos[2]}}" id="series-tab" href="#">Series</a>
+                </li>
+                <li class="nav-item"  (click) = "changeActive(3)">
+                  <a class="nav-link {{listaActivos[3]}}" id="stories-tab" href="#">Stories</a>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane {{listaActivosContent[0]}}" id="comics" role="tabpanel" aria-labelledby="comics-tab">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Comic Image</th>
+                                <th scope="col">Comic Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor = "let c of SelectedHero_.comics">
+                                <td></td>
+                                <td>{{c.name}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-pane {{listaActivosContent[1]}}" id="events" role="tabpanel" aria-labelledby="events-tab">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Event Image</th>
+                                <th scope="col">Event Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor = "let e of SelectedHero_.events">
+                                <td></td>
+                                <td>{{e.name}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-pane {{listaActivosContent[2]}}" id="series" role="tabpanel" aria-labelledby="series-tab">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Series Image</th>
+                                <th scope="col">Series Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor = "let s of SelectedHero_.series">
+                                <td></td>
+                                <td>{{s.name}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-pane {{listaActivosContent[3]}}" id="series" role="tabpanel" aria-labelledby="stories-tab">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Series Image</th>
+                                <th scope="col">Series Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor = "let st of SelectedHero_.stories">
+                                <td></td>
+                                <td>{{st.name}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+              </div>
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+</div>
