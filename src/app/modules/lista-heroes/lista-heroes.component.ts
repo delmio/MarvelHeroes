@@ -17,6 +17,7 @@ export class ListaHeroesComponent implements OnInit {
   listaHeroes: Array<Hero> = [];
   listaActivos = new Array(4).fill('');
   listaActivosContent = new Array(4).fill('');
+  page:number = 1;
 
   constructor(
     private MarvelExternalApi : MarvelExternalApiService

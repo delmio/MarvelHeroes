@@ -1,17 +1,29 @@
 <div class="container">
+    <div class="titulo">
+        <h2>Tutorial de Angular - Héroes de Marvel</h2>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <input type="text" class="form-control"  placeholder="Buscar Superheroe">
+    </div>
+
+
     <div class="row">
 
         <div class = "col-3" *ngFor = "let h of listaHeroes" style="margin-bottom: 15px; margin-top: 5px;">
 
-            <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
-                <img src="{{h.urlFinalImagen}}" class="card-img-top" alt="{{h.name}}" style="height: 250px; width: 250px;">
-                <div class="card-body">
+            <div class="card cardStyle">
+                <img src="{{h.urlFinalImagen}}" class="card-img-top" alt="{{h.name}}" style="height: 100%;">
+                <div class="heroTitle">
+                    <label>{{h.name}}</label>
+                </div>
+                <!-- <div class="card-body">
                 <h5 class="card-title">{{h.name}}</h5>
                 <small style="font-size: 10px;">Modified: {{ h.modified | date: 'dd/MM/yyyy'}}</small>
                 <p class="card-text" *ngIf = "h.description != ''">{{h.description}}</p>
                 <p class="card-text" *ngIf = "h.description == ''">No description found for this hero.</p>
                 <small class="link" (click) = "openHeroModal(h.id)" >Hero ID: {{h.id}}</small>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -85,6 +97,7 @@
                             </tr>
                             </tbody>
                         </table>
+
                     </div>
 
                     <div class="tab-pane {{listaActivosContent[1]}}" id="events" role="tabpanel" aria-labelledby="events-tab">

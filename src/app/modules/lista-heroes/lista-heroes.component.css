@@ -6,11 +6,33 @@ small.link:hover{
     color: brown;
 }
 
-.modal-dialog {
-    max-width: 1500px;
-
+.cardStyle{
+    padding: 15px;
+    border-radius: 10px;
+    height: 350px;
+    cursor: pointer;
 }
 
-.card-body{
-    height: 360px;
+.titulo{
+    text-align: center;
+    background-color: red;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px white solid;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.heroTitle{
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    position: absolute;
+    width: 250px;
+    margin-top: 15px;
+    margin-left: 12px;
 }
