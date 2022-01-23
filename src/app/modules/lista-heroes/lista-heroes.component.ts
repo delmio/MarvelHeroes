@@ -32,7 +32,7 @@ export class ListaHeroesComponent implements OnInit {
     this.MarvelExternalApi.getHeroes().toPromise()
     .then((r)=>{
 
-      this.listaHeroes = r.data.results.map(x => {
+      this.listaHeroes = r.map(x => {
           this.Hero_                = new Hero;
           this.Hero_.id             = x.id;
           this.Hero_.description    = x.description;
@@ -56,12 +56,12 @@ export class ListaHeroesComponent implements OnInit {
     }else if(offsetType == 2){
       this.page = Number(this.page) + 1;
     }
-    console.log(this.page);
-    let offset = this.page * this.step;
+
+    let offset = Number(this.page * this.step);
     this.MarvelExternalApi.getHeroesOffset(offset).toPromise()
     .then((r)=>{
 
-      this.listaHeroes = r.data.results.map(x => {
+      this.listaHeroes = r.map(x => {
           this.Hero_                = new Hero;
           this.Hero_.id             = x.id;
           this.Hero_.description    = x.description;
@@ -74,6 +74,14 @@ export class ListaHeroesComponent implements OnInit {
       });
       
     }).catch((err)=>{
+
+      if(offsetType == 1){
+        this.page = Number(this.page) + 1;
+      }else if(offsetType == 2){
+        this.page = Number(this.page) - 1;
+      }
+
+
       console.log(err);
     })
   }
