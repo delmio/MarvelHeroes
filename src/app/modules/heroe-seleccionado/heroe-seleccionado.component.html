@@ -22,9 +22,13 @@
                 <div class="div-desgloce-heroe">
                     <label>{{ SelectedHero_.modified | date:'fullDate'}} , {{ SelectedHero_.modified | date:'shortTime'}} </label>
                 </div>
+
+                <div class="div-desgloce-heroe" *ngIf = "SelectedHero_.existeColor">
+                    <label style="color: {{SelectedHero_.color}}">Acabas de clasificar a tu héroe en el equipo.</label>
+                </div>
     
                 <div class="div-desgloce-heroe">
-                    <button type="button" class="btn btn-primary">Clasificar</button>
+                    <button type="button" class="btn btn-primary" (click) = "abrirModalHeroe()">Clasificar</button>
                 </div>
 
             </div>
@@ -32,3 +36,47 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="modalTeamHeroe" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTeamHeroe">¿En cual grupo quieres colocar a tu súper héroe?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-4 PrimeroCol"></div>
+                <div class="col-4 SegundoCol"></div>
+                <div class="col-4 TerceroCol"></div>
+            </div>
+            
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-6">
+                    <div style="background-color: {{group_colors[0]}};" class="contenedorColores" (click) = "seleccionarTeam(group_colors[0])">
+                        <label style="margin-top: 27px;">Azul</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div style="background-color: {{group_colors[1]}};" class="contenedorColores" (click) = "seleccionarTeam(group_colors[1])">
+                        <label style="margin-top: 27px;">Violeta</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div style="background-color: {{group_colors[2]}};" class="contenedorColores" (click) = "seleccionarTeam(group_colors[2])">
+                        <label style="margin-top: 27px;">Naranja</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div style="background-color: {{group_colors[3]}};" class="contenedorColores" (click) = "seleccionarTeam(group_colors[3])">
+                        <label style="margin-top: 27px;">Verde</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

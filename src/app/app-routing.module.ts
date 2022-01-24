@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-//imports
-
-
 
 const routes: Routes = [
 
@@ -13,8 +10,9 @@ const routes: Routes = [
   },
 
   { path: 'heroe/:id_heroe', 
-  loadChildren: () => import('./modules/heroe-seleccionado/heroe-seleccionado.module')
-  .then(m => m.HeroeSeleccionadoModule) }
+    loadChildren: () => import('./modules/heroe-seleccionado/heroe-seleccionado.module')
+    .then(m => m.HeroeSeleccionadoModule) 
+  }
 
 ];
 

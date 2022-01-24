@@ -5,11 +5,9 @@ export class Hero {
     public modified: Date
     public resourceURI:string;
     public urlFinalImagen:string;
-    public comics: any[];
-    public events: any[];
-    public series: any[];
-    public stories: any[];
-    
+    public color:any;
+    public existeColor: boolean;
+
     constructor() {
         this.id             = 0;
         this.name           = "";
@@ -17,9 +15,7 @@ export class Hero {
         this.modified       = null,
         this.resourceURI    = "";
         this.urlFinalImagen = "";
-        this.comics         = [];
-        this.events         = [];
-        this.series         = [];
-        this.stories         = [];
+        this.color          = '';
+        this.existeColor    = false;
     }
 }
