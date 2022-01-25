@@ -28,4 +28,8 @@ export class MarvelExternalApiService {
     return this._http.get(finalUrl);
   }
 
+  postHeroColorGroup(body:any):Observable<any>{
+    var finalUrl = this._url + 'character/saveColor/';
+    return this._http.post(finalUrl, body);
+  }
 }

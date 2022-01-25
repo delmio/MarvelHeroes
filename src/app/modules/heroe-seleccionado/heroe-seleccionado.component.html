@@ -24,7 +24,12 @@
                 </div>
 
                 <div class="div-desgloce-heroe" *ngIf = "SelectedHero_.existeColor">
-                    <label style="color: {{SelectedHero_.color}}">Acabas de clasificar a tu héroe en el equipo.</label>
+                <label>Acabas de clasificar a tu héroe en el equipo 
+                    <label *ngIf = "SelectedHero_.color == '#1f8ff7'" style="color: {{SelectedHero_.color}}">Azul</label>
+                    <label *ngIf = "SelectedHero_.color == '#a43de3'" style="color: {{SelectedHero_.color}}">Violeta</label>
+                    <label *ngIf = "SelectedHero_.color == '#df5c0f'" style="color: {{SelectedHero_.color}}">Naranja</label>
+                    <label *ngIf = "SelectedHero_.color == '#0ea521'" style="color: {{SelectedHero_.color}}">Verde</label>
+                </label>
                 </div>
     
                 <div class="div-desgloce-heroe">

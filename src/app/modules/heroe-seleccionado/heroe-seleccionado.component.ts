@@ -71,15 +71,25 @@ export class HeroeSeleccionadoComponent implements OnInit {
     let auxArr = new Array();
     auxArr.push({id:this.SelectedHero_.id, color: color});
 
-    this.storeChar$.pipe(first()).subscribe(res =>{
-        this._store.dispatch(storeColor({heroe:auxArr}));
+    this.MarvelExternalApi.postHeroColorGroup(auxArr).toPromise()
+    .then((r)=>{
+
+      if(r.ok){
+        this.storeChar$.pipe(first()).subscribe(res =>{
+          this._store.dispatch(storeColor({heroe:auxArr}));
+        });
+      }else{
+        console.log(r.error);     
+      }
+      console.log(r);
+    }).then(()=>{
+      this.SelectedHero_.color = color;
+      this.SelectedHero_.existeColor = true;
+      $("#modalTeamHeroe").modal("hide");
+    }).catch((error)=>{
+      console.log(error);
     });
-    
-    this.SelectedHero_.color = color;
-
-    this.SelectedHero_.existeColor = true;
-
-    $("#modalTeamHeroe").modal("hide");
+  
   }
 
 }
